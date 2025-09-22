@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Decentralized Multi-Agent Safe Motion Planning for Mining Transportation using Diffusion and Model Predictive Projected Control.">
+  <meta name="keywords" content="diffusion model, trajectory planning, autonomous driving, robotics, MPC">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- TODO: -->
+  <meta name="author" content="Under Review">
+  <title>Decentralized Multi-Agent Safe Motion Planning for Mining Transportation using Diffusion and Model Predictive Projected Control</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/index_compdfu.css">
+  <link rel="stylesheet" href="bootstrap-grid.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/index_compdfu.js"></script>
+  <script src="load-mathjax.js" async></script>
+
+  <link rel="stylesheet" href="./static/css/splide.min.css">
+  <script src="./static/js/splide.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="./materials/favicon.ico" />
+
+</head>
+<body>
+
+<section class="hero" style="background-color: #ebf0f1;">
+  <div class="hero-body hero-body-dec19" >
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <!-- is-1 or is-2 -->
+          <h1 class="title publication-title" style="font-size: 48px;">
+            Decentralized Multi-Agent Safe Motion Planning for Mining Transportation using Diffusion and Model Predictive Projected Control
+          </h1>
+
+          <span class="author-block">
+            Anonymous Authors
+          </span>
+          <br>
+          <span class="author-block">
+            Anonymous Institution
+          </span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Teaser</h2>
+
+          <div class="cpdfu_base_row">
+            <div class="multi_hor_rm2d_item">
+
+              <div style="text-align: center;">
+                <img src="materials/teaser/vis_abstract.png" alt="" style="max-width: 850px;">
+              </div>
+              <div class="left-caption" style="margin-top: 10px;">
+                <b><b class="cpdfu_gradient_text">D</b>ecentralized <b class="cpdfu_gradient_text">M</b>ulti-Agent <b class="cpdfu_gradient_text">S</b>afe Motion <b class="cpdfu_gradient_text">P</b>lanning</b> enables reliable multi-agent interactions in mining transportation.
+                The approach decomposes interaction planning into two components: ego reference-line tracking and opponent collision avoidance. A lightweight diffusion-model network is designed to capture these features, allowing agents to learn appropriate <b class="cpdfu_gradient_text">waiting</b> and <b class="cpdfu_gradient_text">proceeding</b> behaviors for safe and efficient transportation.
+              </div>
+            </div>
+          </div>
+          
+
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-full-width"> -->
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified div_abs_text">
+          <p>
+            
+            In mining transportation, trucks must coordinate in confined loading areas, making multi-agent motion planning (MAMP) highly challenging. Rule-based and game-theoretic methods often face deadlocks or dimensionality issues, limiting real-time safety. To address these challenges, this paper proposes a <b class="cpdfu_gradient_text">Decentralized Multi-Agent Safe Motion Planning</b> (DMSP) framework that improves loading-area throughput while ensuring safety. DMSP employs a lightweight diffusion model conditioned on road topology, multi-agent interactions, and goal-pose constraints to generate local collision-free trajectories while efficiently reaching the loading space. It also  leverages classifier-free guidance to flexibly inject multiple conditions during inference. To further ensure trajectory feasibility, a  Model Predictive Projected Control (MPPC)  method is proposed to refine diffusion-generated trajectories by explicitly enforcing kinematic constraints with a high-fidelity system model. Extensive Software-in-the-Loop (SIL) simulations show that DMSP increases loading-area throughput by 42.13% while keeping collision risk below 0.1 and reference-line tracking error within 0.10-0.13 m, outperforming conventional methods. The lightweight model achieves real-time planning across platforms, requiring only <b class="cpdfu_gradient_text">0.076 s</b> on a Jetson Orin and <b class="cpdfu_gradient_text">0.102 s</b> on a standard CPU. Overall, the proposed framework provides an efficient, safe, and deployable solution for mining transportation.
+
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">DMSP  Demonstrates Strong Safety and Efficiency Performance in Multi-agent Intersections</h2>
+          <div class="container bg-3">
+            <div class="left-caption" style="margin-top: 10px;">
+              Note: Videos for different cases have been accelerated with different scale  to improve playback efficiency.
+              The agent's flashing indicates data loss during node communication, reflecting the unstable communication conditions of real-world scenarios.
+            </div>
+
+            <div class="centered-caption" style="justify-content: center;">
+
+              <div class="video-container" style="gap: 5px" >
+                  <div class="continuous_racing_item" id="pnc_car2case1">
+                    <p class="splide_lb_suc_vs_rollout_repl cal_our_qual_caption">
+                      <span style="font-size: 15px; color: #333;"> (a) FSM: 2 Agents at Case1 </span>
+                      <span class="splide_kuka_prob_id_repl">
+                        <span class="replay_lb_suc" video_section="pnc_car2case1">
+                          <img src="static/replay.png" style="width: 10px; height: auto;"  />
+                          <span style="font-size: 15px;">replay</span>
+                        </span>
+                      </span>
+                      
+                    </p>
+                    <video id="antmaze_exp_qual_list_dset" muted autoplay="" preload="metadata" style="max-width: 500px">
+                      <source src="materials/intersections/pnc_car2case0_video.mp4"  type="video/mp4">
+                    </video>
+                  </div>
+
+                  <div class="continuous_racing_item" id="pnc_car3case1">
+                    <div class="multi_hor_rm2d_caption cal_our_qual_caption" > 
+                      <span style="font-size: 15px; color: #333;">  (b) FSM: 3 Agents at Case1 </span>
+                      <span class="splide_kuka_prob_id_repl">
+                        <span class="replay_lb_suc" video_section="pnc_car3case1">
+                          <img src="static/replay.png" style="width: 10px; height: auto;"  />
+                          <span style="font-size: 15px;">replay</span>
+                        </span>
+                      </span>
+                      
+                    </div>
+
+                    <video id="antmaze_exp_qual_list_rollout" muted autoplay="" preload="metadata" style="max-width: 500px">
+                      <source src="materials/intersections/pnc_car3case0_video.mp4" type="video/mp4">
+                    </video>
+
+                  </div>
+
+              </div>
+
+              <div class="video-container" style="gap: 5px" >
+                  <div class="continuous_racing_item" id="car2case1">
+
+                    <p class="splide_lb_suc_vs_rollout_repl cal_our_qual_caption">
+                      <span style="font-size: 15px; color: #333;"> (c) DMSP: 2 Agents at Case1 </span>
+                      <span class="splide_kuka_prob_id_repl">
+                        <!-- replay together -->
+                        <span class="replay_lb_suc" video_section="car2case1">
+                          <img src="static/replay.png" style="width: 10px; height: auto;" />
+                          <span style="font-size: 15px;">replay</span>
+                        </span>
+                        
+                      </span>
+                    </p>
+
+                    <video id="antmaze_exp_qual_list_dset" muted autoplay="" preload="metadata" style="max-width: 500px">
+                      <source src="materials/intersections/car2case0_video.mp4"  type="video/mp4">
+                    </video>
+                  </div>
+
+                  <div class="continuous_racing_item" id="car3case1">
+                    <p class="splide_lb_suc_vs_rollout_repl cal_our_qual_caption">
+                      <span style="font-size: 15px; color: #333;"> (d) DMSP: 3 Agents at Case1 </span>
+                      <span class="splide_kuka_prob_id_repl">
+                        <span class="replay_lb_suc" video_section="car3case1">
+                          <img src="static/replay.png" style="width: 10px; height: auto;"  />
+                          <span style="font-size: 15px;">replay</span>
+                        </span>
+                      </span>
+                      
+                    </p>
+                    <video id="antmaze_exp_qual_list_dset" muted autoplay="" preload="metadata" style="max-width: 500px">
+                      <source src="materials/intersections/car3case0_video.mp4"  type="video/mp4">
+                    </video>
+                  </div>
+              </div>
+
+              <div class="video-container" style="gap: 5px" >
+
+                  <div class="continuous_racing_item" id="car2case2">
+                    <div class="multi_hor_rm2d_caption cal_our_qual_caption" > 
+                      <span style="font-size: 15px; color: #333;"> (e) DMSP: 2 Agents at Case2 </span>
+                      <span class="splide_kuka_prob_id_repl">
+                        <span class="replay_lb_suc" video_section="car2case2">
+                          <img src="static/replay.png" style="width: 10px; height: auto;"  />
+                          <span style="font-size: 15px;">replay</span>
+                        </span>
+                        
+                      </span>
+                    </div>
+
+                    <video id="antmaze_exp_qual_list_rollout" muted autoplay="" preload="metadata" style="max-width: 500px">
+                      <source src="materials/intersections/car2case1_video.mp4" type="video/mp4">
+                    </video>
+
+                  </div>
+
+                  <div class="continuous_racing_item" id="car3case2">
+                    <div class="multi_hor_rm2d_caption cal_our_qual_caption" > 
+                      <span style="font-size: 15px; color: #333;">  (f) DMSP: 3 Agents at Case2 </span>
+                      <span class="splide_kuka_prob_id_repl">
+                        <span class="replay_lb_suc" video_section="car3case2">
+                          <img src="static/replay.png" style="width: 10px; height: auto;"  />
+                          <span style="font-size: 15px;">replay</span>
+                        </span>
+                      </span>
+                      
+                    </div>
+
+                    <video id="antmaze_exp_qual_list_rollout" muted autoplay="" preload="metadata" style="max-width: 500px">
+                      <source src="materials/intersections/car3case1_video.mp4" type="video/mp4">
+                    </video>
+
+                  </div>
+              </div>
+
+              <div class="video-container" style="gap: 5px" >
+
+                <div class="continuous_racing_item" id="car2case3">
+                  <div class="multi_hor_rm2d_caption cal_our_qual_caption" > 
+                    <span style="font-size: 15px; color: #333;"> (g) DMSP: 2 Agents at Case3 </span>
+                    <span class="splide_kuka_prob_id_repl">
+                      <span class="replay_lb_suc" video_section="car2case3">
+                        <img src="static/replay.png" style="width: 10px; height: auto;"  />
+                        <span style="font-size: 15px;">replay</span>
+                      </span>
+                      
+                    </span>
+                  </div>
+
+                  <video id="antmaze_exp_qual_list_rollout" muted autoplay="" preload="metadata" style="max-width: 500px">
+                    <source src="materials/intersections/car2case2_video.mp4" type="video/mp4">
+                  </video>
+
+                </div>
+
+                <div class="continuous_racing_item" id="car3case3">
+
+                  <div class="multi_hor_rm2d_caption cal_our_qual_caption" > 
+                    <span style="font-size: 15px; color: #333;"> (h) DMSP: 3 Agents at Case3 </span>
+                    <span class="splide_kuka_prob_id_repl">
+                      <span class="replay_lb_suc" video_section="car3case3">
+                        <img src="static/replay.png" style="width: 10px; height: auto;"  />
+                        <span style="font-size: 15px;">replay</span>
+                      </span>
+                    </span>
+                    
+                  </div>
+
+                  <video id="antmaze_exp_qual_list_rollout" muted autoplay="" preload="metadata" style="max-width: 500px">
+                    <source src="materials/intersections/car3case2_video.mp4" type="video/mp4">
+                  </video>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- <b class="cpdfu_gradient_text"></b> -->
+
+            <div class="left-caption" style="margin-top: 10px;">
+              <b>These videos demonstrates strong agent <b class="cpdfu_gradient_text">collision-avoidance capability and consistent</b> interaction strategies.</b> For example, in video (h), Agent 2 stops to let Agent 1 pass first, ensuring safety. In addition, DMSP learns safe platooning behavior in on-lane space, as shown in video (g). At the loading area, Agent 1 is too close to Agent 2 and waits until Agent 2 moves forward, then resumes trajectory generation and joins the platoon. Furthermore, in all cases, agents entering the loading area in reverse yield to exiting agents, reflecting the strategy consistency captured by the diffusion model.
+            </div>
+
+            <hr>
+            <div style="text-align: center;">
+              <img src="materials/tables/table1.png" alt="" style="max-width: 950px;">
+            </div>
+            <div class="left-caption" style="margin-top: 10px;">
+              <b>DMSP demonstrates a clear advantage over Finite State Machine (FSM) in <b class="cpdfu_gradient_text">throughput</b>.</b> In Case 1, the normalized throughput (Norm.T) under the two-agent setting reaches 1.61% for DMSP compared to -17.54% for FSM, while under the three-agent setting it is -19.29% for DMSP and -22.49% for FSM. The interaction sequences in videos (a) and (c) illustrate the difference: FSM releases Agent 1 before Agent 2, whereas DMSP typically releases Agent 2 first, thereby reducing waiting time. By learning a high-efficiency strategy from the historical dataset, DMSP establishes a transportation policy with substantially higher efficiency.
+            </div>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Inference Efficiency of the Light Diffusion Model</h2>
+          <div class="container bg-3">
+            <div class="left-caption" style="margin-top: 10px;">
+              
+              The raw PyTorch model is first converted into a static Open Neural Network Exchange (ONNX) model, and then tailored to specific GPU devices to obtain the TensorRT-optimized (Trt) model. 
+            
+          </div>
+            <div style="text-align: center;">
+              <img src="materials/tables/table2.png" alt="" style="max-width: 550px;">
+            </div>
+            <div class="left-caption" style="margin-top: 10px;">
+              <b>The lightweight diffusion model achieves <b class="cpdfu_gradient_text">real-time inference across platforms</b>.</b> 
+              <!-- The raw PyTorch model is first converted into a static Open Neural Network Exchange (ONNX) model, and then tailored to specific GPU devices to obtain the TensorRT-optimized (Trt) model.  -->
+
+              On a cloud server equipped with a 3.9 GHz CPU and an NVIDIA L20 GPU, the TensorRT-optimized model achieves a mean frame rate (M.FR) of 44 Hz with a time standard deviation of only 2.25x10<sup>-4</sup>, indicating highly efficient and stable runtime. Using the ONNX model for inference, the M.FR also remains 10 Hz, further highlighting the model's lightweight design. On the Jetson Orin platform, which is the same as that used in the real-world operational stack, equipped with a 2.2 GHz CPU and an Ampere-architecture GPU, the mean inference time is only <b>0.076 s</b>, corresponding to M.FR of <b>13 Hz</b>, demonstrating that the proposed DMSP can also meet real-time planning demands on embedded systems, thereby greatly extending its applicability.
+            
+          </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Conclusion</h2>
+        <div class="content has-text-justified div_abs_text">
+          <p>
+	          This paper introduced DMSP, a <b class="cpdfu_gradient_text">decentralized multi-agent motion planning</b> framework that combines a lightweight diffusion model with MPPC-based trajectory refinement.  A key finding of this study is that trajectory patterns learned from intersection datasets by a single agent can be effectively distributed across a multi-agent cluster, resulting in safe and consistent multi-agent planning.  High-fidelity simulations show that DMSP improves loading-area throughput by up to 42.13%, while keeping collision risk below 0.1 and reference-line tracking error within 0.10-0.13 m. The light diffusion model also achieves real-time inference across platforms, reaching 44 Hz on an NVIDIA L20 GPU and 13 Hz on a Jetson Orin. These results highlight DMSP as an efficient, safe, and deployable solution for mining transportation. Future work will integrate MPC directly into the sampling process to further enhance safety and deploy the framework on real-world autonomous haul trucks.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+
+<footer class="footer">
+  <div class="container">
+    <!-- TODO: -->
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+    <!-- TODO: -->
+      <a class="icon-link" href="" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-8 has-text-centered">
+        <div class="content">
+          <p>
+            This website is forked from the
+						<a href="https://nerfies.github.io/">Nerfies</a> and
+						<a href="https://github.com/nerfies/nerfies.github.io">source code</a>. And template is borrowed from <a href="https://comp-diffuser.github.io/" target="_blank">here</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./static/js/last_run.js"></script>
+
+</body>
+</html>
